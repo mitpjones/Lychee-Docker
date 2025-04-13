@@ -16,7 +16,8 @@ ARG TARGET=nightly
 ARG COMPOSER_NO_DEV=1
 # To use another branch instead of master pass `--build-arg BRANCH=some-branch` to `docker build`
 # This is NOT compatible with the release target above
-ARG BRANCH=master
+#ARG BRANCH=master
+ARG BRANCH=enhance-pdf-support
 
 # Install base dependencies, add user and group, clone the repo and install php libraries
 RUN \
@@ -64,7 +65,8 @@ RUN \
     cd /var/www/html && \
     if [ "$TARGET" = "release" ] ; then RELEASE_TAG="-b v$(curl -s https://raw.githubusercontent.com/LycheeOrg/Lychee/master/version.md)" ; \
     elif [ "$BRANCH" != "master" ] ; then RELEASE_TAG="-b $BRANCH" ; fi && \
-    git clone --depth 1 $RELEASE_TAG https://github.com/LycheeOrg/Lychee.git && \
+    #git clone --depth 1 $RELEASE_TAG https://github.com/LycheeOrg/Lychee.git && \
+    git clone --depth 1 $RELEASE_TAG https://github.com/mitpjones/Lychee.git && \
     mv Lychee/.git/refs/heads/$BRANCH Lychee/$BRANCH || cp Lychee/.git/HEAD Lychee/$BRANCH && \
     mv Lychee/.git/HEAD Lychee/HEAD && \
     rm -r Lychee/.git/* && \
