@@ -59,6 +59,7 @@ RUN \
     cron \
     composer \
     ghostscript \
+    vim \
     unzip && \
     addgroup --gid "$PGID" "$USER" && \
     adduser --gecos '' --no-create-home --disabled-password --uid "$PUID" --gid "$PGID" "$USER" && \
