@@ -92,6 +92,13 @@ RUN \
     apt-get clean -qy && \
     rm -rf /var/lib/apt/lists/*
 
+
+# https://stackoverflow.com/questions/53377176/change-imagemagick-policy-on-a-dockerfile
+ARG imagemagic_config=/etc/ImageMagick-6/policy.xml
+
+RUN if [ -f $imagemagic_config ] ; then sed -i 's/<policy domain="coder" rights="none" pattern="PDF" \/>/<policy domain="coder" rights="read|write" pattern="PDF" \/>/g' $imagemagic_config ; else echo did not see file $imagemagic_config ; fi
+
+
 # Multi-stage build: Build static assets
 # This allows us to not include Node within the final container
 FROM node:20 AS static_builder
