@@ -17,7 +17,7 @@ ARG COMPOSER_NO_DEV=1
 # To use another branch instead of master pass `--build-arg BRANCH=some-branch` to `docker build`
 # This is NOT compatible with the release target above
 #ARG BRANCH=master
-ARG BRANCH=tim-local-hbhs
+ARG BRANCH=enhance-pdf-support
 
 # Install base dependencies, add user and group, clone the repo and install php libraries
 RUN \
