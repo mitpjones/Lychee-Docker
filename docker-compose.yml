@@ -58,11 +58,18 @@ services:
 #      - 90:80
       - ${LYCHEE_PORT:-90}:80
     volumes:
-      - ./lychee/conf:/conf
-      - ./lychee/uploads:/uploads
-      - ./lychee/sym:/sym
-      - ./lychee/logs:/logs
-      - ./lychee/tmp:/lychee-tmp
+#      - ./lychee/conf:/conf
+#      - ./lychee/uploads:/uploads
+#      - ./lychee/sym:/sym
+#      - ./lychee/logs:/logs
+#      - ./lychee/tmp:/lychee-tmp
+
+      - ./${COMPOSE_PROJECT_NAME}/conf:/conf
+      - ./${COMPOSE_PROJECT_NAME}/uploads:/uploads
+      - ./${COMPOSE_PROJECT_NAME}/sym:/sym
+      - ./${COMPOSE_PROJECT_NAME}/logs:/logs
+      - ./${COMPOSE_PROJECT_NAME}/tmp:/lychee-tmp
+
     env_file:
       - path: ./.env
         required: false
@@ -134,8 +141,8 @@ networks:
 
 volumes:
   mysql:
-    name: lychee_prod_mysql
+    #name: lychee_prod_mysql
     driver: local
   cache:
-    name: lychee_prod_redis
+    #name: lychee_prod_redis
     driver: local
