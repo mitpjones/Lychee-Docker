@@ -49,10 +49,10 @@ services:
     restart: unless-stopped
 
   lychee:
-    image: lycheeorg/lychee
-    #image: tim/lychee-local
+    #image: lycheeorg/lychee
+    image: tim/lychee
     #container_name: lychee
-    container_name: lychee-local
+    container_name: lychee
     security_opt:
       - no-new-privileges:true
     ports:
