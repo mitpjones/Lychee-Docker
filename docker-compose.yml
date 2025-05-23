@@ -7,7 +7,7 @@
 services:
   lychee_cache:
     image: redis:alpine
-    container_name: lychee_redis
+    #container_name: lychee_redis don't specify container name other can't scale
     hostname: lychee_redis
     security_opt:
       - no-new-privileges:true
@@ -28,7 +28,7 @@ services:
     restart: on-failure:5
 
   lychee_db:
-    container_name: lychee_db
+    #container_name: lychee_db don't specify container name other can't scale
     image: mariadb:10
     security_opt:
       - no-new-privileges:true
@@ -51,8 +51,7 @@ services:
   lychee:
     #image: lycheeorg/lychee
     image: tim/lychee
-    #container_name: lychee
-    container_name: lychee
+    #container_name: lychee  don't specify container name other can't scale
     security_opt:
       - no-new-privileges:true
     ports:
