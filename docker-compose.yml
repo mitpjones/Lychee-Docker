@@ -13,6 +13,9 @@ services:
       - no-new-privileges:true
     healthcheck:
       test: ["CMD-SHELL", "redis-cli ping || exit 1"]
+    # Allow Redis to work out an alternative port than the default 6379 so that can have multiple
+    # docker containers 
+    command: --port ${REDIS_PORT}
     ports:
       - ${REDIS_PORT:-6379}:${REDIS_PORT:-6379}
     user: 1026:100
